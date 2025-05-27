@@ -419,6 +419,12 @@ void CPlayers::RenderHook(
 
 		RenderHand(&RenderInfo, Position, normalize(HookPos - Pos), -pi / 2, vec2(20, 0), Alpha);
 	}
+	if(m_aClients[ClientID].m_Active) {
+	    char aPingText[16];
+	    str_format(aPingText, sizeof(aPingText), "%d ms", m_aClients[ClientID].m_Latency);
+	    TextRender()->TextColor(1.0f, 1.0f, 1.0f, 1.0f); // Белый цвет
+	    TextRender()->Text(Pos.x, Pos.y - 30.0f, 10.0f, aPingText, -1);
+	}
 }
 
 void CPlayers::RenderPlayer(
